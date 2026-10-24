@@ -2,7 +2,7 @@
 #
 # 推荐直接在 Home Assistant UI 中操作：
 #   设置 -> 设备与服务 -> 添加集成 -> HomeKit Bridge
-# 然后在 Bridge 的“包含实体”中加入 switch.li_jia_bu_fang_mo_shi（实体 ID 以实际为准）。
+# 然后在 Bridge 的“包含实体”中加入 switch.*（实体 ID 以“开发者工具 → 状态”为准）。
 #
 # 下面是通过 configuration.yaml 配置时的示例。若已经通过 UI 创建了
 # HomeKit Bridge，请不要重复添加这一段，直接在 UI 的 Bridge 配置里调整
@@ -12,13 +12,15 @@ homekit:
     port: 21063
     mode: bridge
     filter:
-      include_entities:
-        - switch.li_jia_bu_fang_mo_shi
+      # 精确添加：替换为实际实体 ID，然后取消注释
+      # include_entities:
+      #   - switch.hikvision_nvr_192_168_1_100_li_jia_bu_fang_mo_shi
       # 也可以按域暴露所有 switch：
-      # include_domains:
-      #   - switch
+      include_domains:
+        - switch
     entity_config:
-      switch.li_jia_bu_fang_mo_shi:
-        name: 离家布防
+      # 精确模式下的重命名示例（实体 ID 替换为实际值）：
+      # switch.hikvision_nvr_192_168_1_100_li_jia_bu_fang_mo_shi:
+      #   name: 离家布防
         # 如果 HomeKit 中显示为“灯/插座”需要额外设置，switch 域默认就是开关，
         # 这里一般不需要 show_as。

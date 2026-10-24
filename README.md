@@ -136,7 +136,9 @@ GET /ISAPI/Event/triggers/fielddetection-7
 
 ## 实体
 
-- 实体：`switch.li_jia_bu_fang_mo_shi`（实际 entity_id 取决于开关名称）
+- 实体：`switch.*`（实际 entity_id 由 Home Assistant 根据设备名和开关名称生成；
+  新版 Home Assistant 可能包含设备名前缀，请在“开发者工具 → 状态”中查看，
+  或直接从集成页面打开实体）
 - 打开：为所有已选通道开启“上传中心”
 - 关闭：为所有已选通道关闭“上传中心”
 - 图标：`mdi:shield-home` / `mdi:shield-home-outline`
@@ -165,14 +167,16 @@ GET /ISAPI/Event/triggers/fielddetection-7
 1. 设置 → 设备与服务 → 添加集成 → **HomeKit Bridge**。
 2. 选择要暴露的域/实体：
    - 简单方式：包含 `switch` 域；
-   - 精确方式：包含实体 `switch.li_jia_bu_fang_mo_shi`（以实际 entity_id 为准）。
+   - 精确方式：包含实体 `switch.xxx`（以“开发者工具 → 状态”中的实际 entity_id 为准）。
 3. 完成创建后，Home Assistant 会显示二维码和 8 位配对码。
 4. 打开 iPhone/iPad 的“家庭”App → `+` → 添加配件 → 扫描二维码 →
    输入配对码。
-5. 在“家庭”中把开关命名为“离家布防”。
+5. 在“家庭”中把开关命名为“离家布防”（如果显示的默认名称较长，可以直接在
+   Apple 家庭 App 中重命名，不影响集成）。
 
 如果已经存在 HomeKit Bridge，可直接在它的“配置”里把新实体加入包含列表，
-然后重新加载 HomeKit 集成。
+然后重新加载 HomeKit 集成。HomeKit Bridge 的配置修改后通常需要几秒到一分钟，
+Apple 家庭才会刷新出新的配件。
 
 YAML 示例见 [homekit_configuration_example.yaml](homekit_configuration_example.yaml)。
 如果已经通过 UI 创建了 Bridge，请不要重复添加同名 YAML 配置。
