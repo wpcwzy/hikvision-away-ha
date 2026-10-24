@@ -47,6 +47,11 @@ actions:
 也可以直接在 Apple 家庭中创建“第一个人离开家 / 最后一个人到家”的自动化来
 控制这个开关。
 
+> 注意：“上传中心”是 NVR 侧的海康推送联动（通常对应 Hik-Connect / iVMS 手机
+> 通知）。手机能否收到推送，还取决于 NVR 是否已绑定 Hik-Connect 以及海康 App
+> 的通知权限。Home Assistant 本身不会把 NVR 事件自动推送到手机；如果希望通过
+> Home Assistant 发通知，需要另外编写自动化/通知动作。
+
 ## 功能
 
 - 一个开关同时控制一个或多个 NVR 通道（例如 7 和 8 通道）。
@@ -96,8 +101,8 @@ GET /ISAPI/Event/triggers/fielddetection-7
 
 ### 方式 A：HACS（推荐）
 
-1. 在 HACS → 集成 → 右上角菜单 → **自定义存储库** 中添加本仓库 URL，
-   类别选择“Integration”。
+1. 在 HACS → 集成 → 右上角菜单 → **自定义存储库** 中添加
+   `https://github.com/wpcwzy/hikvision-away-ha`，类别选择“Integration”。
 2. 在 HACS 中搜索 **Hikvision NVR Away Arm**，安装。
 3. 重启 Home Assistant。
 
