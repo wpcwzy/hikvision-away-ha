@@ -1,0 +1,62 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to the Hikvision NVR",
+        "description": "Enter the NVR IP address, HTTP port and credentials. The credentials are stored in Home Assistant and are only sent to the NVR."
+      },
+      "channels": {
+        "title": "Choose channels",
+        "description": "Model: {model}, host: {host}. Select one or more camera channels whose perimeter-protection / region-intrusion upload-center links should be controlled by the same switch. The NVR's channels 7 and 8 are pre-selected when present."
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate with the NVR",
+        "description": "The NVR rejected the stored credentials. Enter the current username and password."
+      }
+    },
+    "error": {
+      "invalid_host": "The host must not be empty.",
+      "invalid_auth": "The username or password is incorrect.",
+      "cannot_connect": "Could not connect to the NVR. Check the IP address, port, scheme and network.",
+      "api_error": "The NVR rejected the ISAPI request. Check that ISAPI is enabled and the account has sufficient permissions.",
+      "no_channels": "No camera channels were found on the NVR.",
+      "invalid_channel": "Please select at least one valid channel.",
+      "channel_not_supported": "At least one selected channel does not expose the field-detection (region intrusion) event. Choose another channel.",
+      "invalid_scan_interval": "The polling interval must be between 10 and 300 seconds.",
+      "already_configured": "These NVR channels have already been configured.",
+      "unknown": "Unexpected error; check the Home Assistant logs."
+    },
+    "abort": {
+      "already_configured": "These NVR channels have already been configured.",
+      "reauth_successful": "Re-authentication was successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Hikvision away-arm options",
+        "description": "NVR: {host}. Change the controlled channels, the switch name or the polling interval."
+      }
+    },
+    "error": {
+      "invalid_auth": "The username or password is incorrect.",
+      "cannot_connect": "Could not connect to the NVR.",
+      "channel_not_supported": "At least one selected channel does not expose the field-detection (region intrusion) event.",
+      "invalid_channel": "Please select at least one valid channel.",
+      "invalid_scan_interval": "The polling interval must be between 10 and 300 seconds.",
+      "already_configured": "These NVR channels have already been configured.",
+      "unknown": "Unexpected error; check the Home Assistant logs."
+    },
+    "abort": {
+      "entry_not_found": "The config entry could not be found."
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "The NVR rejected the credentials. Re-authenticate the integration. ({error})"
+    },
+    "cannot_update": {
+      "message": "Could not switch the upload-center link for channel(s) {channels}: {error}"
+    }
+  }
+}

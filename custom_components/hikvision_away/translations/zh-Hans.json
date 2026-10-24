@@ -1,0 +1,62 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "连接海康威视 NVR",
+        "description": "请输入 NVR 的 IP 地址、HTTP 端口和登录凭据。凭据只保存在 Home Assistant 中，并仅发送给 NVR。"
+      },
+      "channels": {
+        "title": "选择通道",
+        "description": "设备型号：{model}，地址：{host}。请选择一个或多个通道，由同一个开关控制这些通道的“周界防范 → 区域入侵检测 → 联动方式 → 上传中心”。如果 NVR 存在 7、8 通道，会自动预选。"
+      },
+      "reauth_confirm": {
+        "title": "重新验证 NVR",
+        "description": "NVR 拒绝了已保存的凭据，请输入当前的用户名和密码。"
+      }
+    },
+    "error": {
+      "invalid_host": "主机地址不能为空。",
+      "invalid_auth": "用户名或密码错误。",
+      "cannot_connect": "无法连接 NVR，请检查 IP、端口、协议和网络。",
+      "api_error": "NVR 拒绝了 ISAPI 请求，请确认已启用 ISAPI 且账号有足够权限。",
+      "no_channels": "未在 NVR 上找到任何摄像机通道。",
+      "invalid_channel": "请至少选择一个有效通道。",
+      "channel_not_supported": "所选通道中至少有一个不支持区域入侵（fielddetection）事件，请重新选择。",
+      "invalid_scan_interval": "轮询间隔必须在 10 到 300 秒之间。",
+      "already_configured": "这些 NVR 通道已经配置过了。",
+      "unknown": "发生未知错误，请查看 Home Assistant 日志。"
+    },
+    "abort": {
+      "already_configured": "这些 NVR 通道已经配置过了。",
+      "reauth_successful": "重新验证成功。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "海康 NVR 离家布防选项",
+        "description": "NVR：{host}。可以修改受控通道、开关名称和轮询间隔。"
+      }
+    },
+    "error": {
+      "invalid_auth": "用户名或密码错误。",
+      "cannot_connect": "无法连接 NVR。",
+      "channel_not_supported": "所选通道中至少有一个不支持区域入侵（fielddetection）事件。",
+      "invalid_channel": "请至少选择一个有效通道。",
+      "invalid_scan_interval": "轮询间隔必须在 10 到 300 秒之间。",
+      "already_configured": "这些 NVR 通道已经配置过了。",
+      "unknown": "发生未知错误，请查看 Home Assistant 日志。"
+    },
+    "abort": {
+      "entry_not_found": "找不到对应的配置条目。"
+    }
+  },
+  "exceptions": {
+    "auth_failed": {
+      "message": "NVR 拒绝了登录凭据，请重新验证集成。（{error}）"
+    },
+    "cannot_update": {
+      "message": "无法切换通道 {channels} 的上传中心联动：{error}"
+    }
+  }
+}
